@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Design System - Background */
+  --background-blue: #F2F3FA;
+
+  /* Design System - Container */
+  --container-background: #FFFFFF99;
+  --container-border: #FFFFFF80;
+  --container-corner-radius: 10px;
+  --container-divider: #0000001A;
+  --container-padding: 10px;
+
+  /* Design System - Foreground */
+  --foreground-secondary: #000000B2;
+
+  /* Design System - Button */
+  --button-vertical-padding: 4px;
+  --button-horizontal-padding: 12px;
+  --button-corner-radius: 10px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  animation: blink 0.8s step-start infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor {
+    animation: none;
+  }
+}
+
+.logo-marquee-wrapper {
+  --logo-marquee-gap: 18px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: logo-marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-marquee-gap);
+  min-width: max-content;
+  padding-right: var(--logo-marquee-gap);
+}
+
+.logo-marquee-wrapper:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-marquee-wrapper {
+    --logo-marquee-gap: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-marquee-wrapper {
+    --logo-marquee-gap: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-wrapper {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .logo-marquee-track {
+    animation: none;
+  }
+
+  .logo-marquee-group[aria-hidden='true'] {
+    display: none;
+  }
+}
