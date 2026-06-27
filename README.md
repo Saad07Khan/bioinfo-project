@@ -27,7 +27,7 @@ For each run you get the result *and* the reasoning: the full scoring matrix, th
 ## Features
 
 - **Three algorithms, implemented from scratch** in TypeScript, no bio libraries.
-- **Step-by-step animation** with playback controls (play, pause, step, speed). Alignment runs animate matrix initialization → fill → traceback; BFS animates the queue, visited set, and discovered path.
+- **Step-by-step animation** with playback controls (play, pause, step, speed), driven by a **Zustand** store that holds the ordered animation steps and current playback position. Alignment runs animate matrix initialization → fill → traceback; BFS animates the queue, visited set, and discovered path.
 - **Full scoring matrix + traceback visualization**, plus a graph view for the mutation algorithm.
 - **Configurable scoring scheme** (match / mismatch / gap penalties).
 - **Alignment statistics**: score, matches, mismatches, gaps, and percent identity. Sequence stats include length, base composition, and GC content.
